@@ -1,17 +1,18 @@
-package demo2;
+package com.mahendra;
 
 import java.util.Date;
 
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.QueryParam;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 
 @Path("account")
 public class AccountResource {
 
 	@GET
-	@Produces("application/xml")
+	@Produces({"application/xml","application/json"})
+	//@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON} )
 	public Account findByNumber(@QueryParam("acc")  String accNumber) {
 		Account ac= new Account();
 		ac.setAccHolderName("Natwarlal");
