@@ -10,7 +10,6 @@ import javax.ws.rs.*;
 // Actual URL http://localhost:8080/customer
 public class CustomerResource {
 	
-	
 	private CustomerDAO dao = CustomerDAO.getInstance();
 	
 	@GET
@@ -31,5 +30,31 @@ public class CustomerResource {
 		System.out.println("Creating a new record for "+customer.getFirstName()+" "+customer.getLastName());
 		dao.create(customer);
 		return "Customer added successfuly!";
+	}
+	
+
+	@GET
+	@Path("by-firstname/{fname}")
+	@Produces({"application/json","application/xml"})
+	// Actual URL http://localhost:8080/customer/by-firstname/natasha
+	public List<Customer> findByFName(@PathParam("fname") String fname) {
+		return dao.findByFName(fname);
+	}
+	
+	@GET
+	@Path("by-lastname/{lname}")
+	@Produces({"application/json","application/xml"})
+	// Actual URL http://localhost:8080/customer/by-firstname/natasha
+	public List<Customer> findByLName(@PathParam("lname") String lname) {
+		return dao.findByLName(lname);
+	}
+	
+	
+	@PUT
+	@Path("{ID}")
+	@Consumes({"application/json","application/xml"})
+	public String update(@PathParam("ID") int id, Customer customer) {
+		dao.update(id, customer);
+		return "Update successful!";
 	}
 }
