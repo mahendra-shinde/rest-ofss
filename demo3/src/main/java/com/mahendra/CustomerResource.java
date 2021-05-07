@@ -13,6 +13,14 @@ public class CustomerResource {
 	private CustomerDAO dao = CustomerDAO.getInstance();
 	
 	@GET
+	@Path("{ID}")
+	@Produces({"application/xml","application/json"})
+	public Customer byId(@PathParam("ID") int id){
+		return dao.findById(id);
+	}
+	
+	
+	@GET
 	@Produces({"application/xml","application/json"})
 	public List<Customer> getAll(){
 		return dao.getAll();
