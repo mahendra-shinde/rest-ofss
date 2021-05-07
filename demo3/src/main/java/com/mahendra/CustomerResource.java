@@ -57,4 +57,11 @@ public class CustomerResource {
 		dao.update(id, customer);
 		return "Update successful!";
 	}
+	
+	@DELETE
+	@Path("{ID}")
+	public String delete(@PathParam("ID") int id) {
+		dao.deleteById(id);
+		return "success";
+	}
 }
