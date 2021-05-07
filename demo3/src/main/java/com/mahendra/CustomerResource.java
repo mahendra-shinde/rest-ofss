@@ -36,7 +36,7 @@ public class CustomerResource {
 	@GET
 	@Path("by-firstname/{fname}")
 	@Produces({"application/json","application/xml"})
-	// Actual URL http://localhost:8080/customer/by-firstname/natasha
+	// Actual URL http://localhost:8080/customer/by-firstname/Bruce
 	public List<Customer> findByFName(@PathParam("fname") String fname) {
 		return dao.findByFName(fname);
 	}

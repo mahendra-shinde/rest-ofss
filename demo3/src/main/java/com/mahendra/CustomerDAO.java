@@ -18,6 +18,21 @@ public class CustomerDAO {
 		customer.setPhone("5765765656");
 		customer.setCustomerId(lastId++);
 		customerList.add(customer);
+		
+		customer = new Customer();
+		customer.setFirstName("Bruce");
+		customer.setLastName("Banner");
+		customer.setPhone("47685765656");
+		customer.setCustomerId(lastId++);
+		customerList.add(customer);
+		
+		customer = new Customer();
+		customer.setFirstName("Bruce");
+		customer.setLastName("Wyne");
+		customer.setPhone("55685765656");
+		customer.setCustomerId(lastId++);
+		customerList.add(customer);
+		
 	}
 	
 	public CustomerDAO() {
@@ -38,7 +53,18 @@ public class CustomerDAO {
 	
 	//Find customer by firstname
 	public List<Customer> findByFName(String name) {
+		//Java8 Streams (Java8,9,10,...16)
 		return 	customerList.stream().filter(c -> c.getFirstName().equalsIgnoreCase(name)).collect(Collectors.toList());
+		
+		/*Older Alternative
+		List<Customer> temp = new ArrayList<>();
+		for(Customer c: customerList) {
+			if(c.getFirstName().equalsIgnoreCase(name)) {
+				temp.add(c);
+			}
+		}
+		return temp;
+		*/
 	}
 	
 	//Find customer by lastname
