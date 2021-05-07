@@ -60,6 +60,7 @@ public class CustomerResource {
 	
 	@DELETE
 	@Path("{ID}")
+	//Actual URL [DEL] http://localhost:8080/customer/1
 	public String delete(@PathParam("ID") int id) {
 		dao.deleteById(id);
 		return "success";
