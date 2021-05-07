@@ -12,13 +12,13 @@ public class App {
 		ClientBuilder builder = ClientBuilder.newBuilder();
 		Client client = builder.build();
 		Customer result = client.target(BASE_URL+"/1")
-						.request() // Preparing a request
-						.accept("application/json") //Set Accept Type
-						.get(Customer.class); //HTTP GET
+				.request() // Preparing a request
+				.accept("application/json") //Set Accept Type
+				.get(Customer.class); //HTTP GET
 		
 		System.out.println("Response : ");
 		
-			System.out.println(result.getFirstName()+" "+result.getLastName());
+		System.out.println(result.getFirstName()+" "+result.getLastName());
 		
 		client.close();
 	}
