@@ -7,28 +7,16 @@ import javax.ws.rs.*;
 
 
 @Path("customer")
+// Actual URL http://localhost:8080/customer
 public class CustomerResource {
 	
-	private List<Customer> customerList = new ArrayList<>();
 	
-	public CustomerResource() {
-		System.out.println("New Customer Resource");
-		init();
-	}
-	
-	void init() {
-		Customer customer = new Customer();
-		customer.setFirstName("Natasha");
-		customer.setLastName("Romanolf");
-		customer.setPhone("5765765656");
-		customerList.add(customer);
-	}
+	private CustomerDAO dao = CustomerDAO.getInstance();
 	
 	@GET
 	@Produces({"application/xml","application/json"})
 	public List<Customer> getAll(){
-		
-		return customerList;
+		return dao.getAll();
 	}
 	/*public Customer[] getAll(){
 		Customer customers[] = new Customer[customerList.size()];
@@ -41,7 +29,7 @@ public class CustomerResource {
 	// Convert the XML in request-body into "customer" object
 	public String create(Customer customer) {
 		System.out.println("Creating a new record for "+customer.getFirstName()+" "+customer.getLastName());
-		customerList.add(customer);
+		dao.create(customer);
 		return "Customer added successfuly!";
 	}
 }

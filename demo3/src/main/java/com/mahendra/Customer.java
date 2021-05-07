@@ -5,9 +5,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Customer {
 
+	private Integer customerId;
 	private String firstName;
 	private String lastName;
 	private String phone;
+	
+	
+	public Integer getCustomerId() {
+		return customerId;
+	}
+	public void setCustomerId(Integer customerId) {
+		this.customerId = customerId;
+	}
 	public String getFirstName() {
 		return firstName;
 	}
