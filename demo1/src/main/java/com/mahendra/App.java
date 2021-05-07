@@ -19,10 +19,10 @@ public class App {
 			final ResourceConfig resourceConfig = new ResourceConfig(HelloWorldResource.class);
 			resourceConfig.register(AccountResource.class);
 			final HttpServer server = GrizzlyHttpServerFactory.createHttpServer(BASE_URI, resourceConfig, false);
-			
-			// Allow JVM to Shutdown the HTTP Server when it "jvm" receives kill 
+
+			// Allow JVM to Shutdown the HTTP Server when it "jvm" receives kill
 			// request from User
-			
+
 			Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
 				@Override
 				public void run() {
